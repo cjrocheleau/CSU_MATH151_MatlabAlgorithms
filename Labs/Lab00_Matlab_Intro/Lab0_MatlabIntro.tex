@@ -1,0 +1,84 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+\newcommand{\comment}[1]{}
+
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+\usepackage{enumitem}
+
+\usepackage{array}
+\usepackage{booktabs}
+
+\lhead{}
+\chead{}
+\rhead{\footnotesize MATH-151 Mathematical Algorithms in Matlab - Fall 2023}
+
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\hypersetup{colorlinks,breaklinks,linkcolor=blue,urlcolor=blue,anchorcolor=blue,citecolor=black}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+	\begin{center}
+		\Large{\textbf{MATH-151: Matlab Introduction Lab}}\\
+			\medskip
+		\normalsize{\textbf{Due:} Monday, August 28, 2023, 10:00am} 
+	\end{center}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Please perform the following tasks using Matlab, submitting all relevant code. You are welcomed to work with other students, however each student must submit their own unique code.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\section*{Task 1: Variables and Operations}
+	\noindent A surprisingly common issue when trying to modify someone else's code is when they use different measurement units than you. To practice working with variables and basic math operations, we will convert units on the heights of some objects. \textit{(Style tip: In complicated codes it can be helpful to include units in the variable name. For example: \texttt{tree\_ft} for the height of a tree, in feet)}
+	\begin{enumerate}[label=\alph*)]
+		\item To convert a measurement in feet to meters we multiply the height by 0.3048. Please convert the heights (in feet) of the following objects to meters. (Be sure to store each measurement as a variable for future use)
+		\begin{center}
+			\begin{tabular}{c | c}
+				Object & Height (ft) \\
+				\midrule
+				Table  & 2.5 \\
+				Ladder & 12 \\
+				Chris  & 5.67 \\
+			\end{tabular}
+		\end{center} 
+		\item How tall, in meters, is Chris while standing on a ladder?
+		\item In meters, how much taller is the ladder than the table?
+		\item Suppose a square room has walls that are 4.8768 meters long, how long are the walls in feet? (To convert from meters to feet we divide the measurement by 0.3048.)
+		\item What is the area of the room in $\text{ft}^2$?
+	\end{enumerate}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section*{Task 2: Help Utilities}
+	\noindent One of the most valuable features of Matlab is that it is very well documented! For this task we will look at the \texttt{help} utility to learn more about one of my favorite functions, \texttt{atan2}.\\
+	\begin{enumerate}[label=\alph*)]
+		\item In the Matlab Command Window, enter \texttt{help atan2}. It will give you a short description of the function. You may also click on the link ''Documentation for atan2" to open the function's documentation page, which includes much more detail. Using these utilities, describe the difference between the \texttt{atan} and \texttt{atan2} functions.
+		\item What is the difference between \texttt{atan2} and \texttt{atan2d}?  
+	\end{enumerate}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		\vfill
+		\textit{Remember to comment your code!}
+	\end{center}
+\end{document}
