@@ -1,0 +1,143 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+\newcommand{\comment}[1]{}
+
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+
+\usepackage{array}
+\usepackage{booktabs}
+
+\lhead{}
+\chead{}
+\rhead{\footnotesize MATH-151 Mathematical Algorithms in Matlab - Fall 2023}
+
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\hypersetup{colorlinks,breaklinks,linkcolor=blue,urlcolor=blue,anchorcolor=blue,citecolor=black}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{center}
+\Large{\textbf{Math-151:  Mathematical Algorithms in Matlab}}\\
+\textbf{Fall 2023}
+\end{center}
+\medskip
+\textbf{Instructor:} Chris Rocheleau (he/him) \\
+\textbf{Email:} C.Rocheleau@ColoState.edu\\
+\\
+\makebox[2.25cm]{\textbf{Class Time:}} Monday/Wednesday/Friday 10:00-10:50 am\\
+\textbf{Class Location:} Weber 205 (Additional resources on Canvas)\\
+\\
+\textbf{Office Hours:} Friday class sessions to be used for extra practice and help. Please reach out via email if additional help is needed.
+
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Course Goals}
+\noindent In this course students will be introduced to common algorithms used to numerically solve problems as well as learn how to implement them in the Matlab programming language. \\
+\\
+\noindent Upon completion of this course, the student is expected to have the following skills:
+\begin{itemize}
+	\item Ability to write and run common algorithms in Matlab, with coding familiarity transferable to other languages
+	\item Effective code commenting and formatting, to ensure code is readable to others
+	\item Understanding of algorithm design and how a computer ``thinks"
+	\item Debug code to identify and fix mistakes.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Required Textbooks}
+
+None!
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Course Grading}
+\begin{itemize}
+	\item \textbf{Lecture Journals (\underline{5\%})}: After each lecture (see schedule below) a lecture journal assignment will be posted on Canvas due prior to the next class period. These journal assignments will be composed of a short writing prompt pertaining to the topics covered in that morning's lecture. These are intended to help me see how each of you are internalizing the class materials prior to lab assignments, and potentially correct any misunderstandings.
+	\item \textbf{Labs (\underline{80\%})}: A lab assignment will be assigned each week, providing hands-on experience with coding algorithms presented in the preceding lecture. Each lab will be due before the Monday class of the following week. Lab time will be provided in class, however students may finish early or need additional time to complete labs. Students are invited to work together, but each student must submit their own code for each lab.
+	\item \textbf{Final Lab (\underline{15\%})}: The last week of this class will consist of lab time for a cumulative final lab assignment. This assignment will cover multiple concepts and algorithms from the class and is intended to test your understanding of the connections between topics covered in class.
+\end{itemize}
+
+
+\section*{Instructor Pedagogy and Course Policies}
+As an instructor, I believe that the most I can do is expose my students to the course material. Learning occurs when the student begins to think about and \textbf{engage with} the course material appropriately. For this reason, I \textbf{highly encourage} each student to actively participate in each class lecture, taking notes, thinking about the material being presented, and asking questions as needed.  Additionally, I recommend students to work together on labs, discussing your approach and solution to a problem is a great way to fortify your understanding of coding processes and debugging. I feel communication is a vital part of the learning process, thus all students are invited to discuss any concerns with the class via lecture journals, email, or in person.
+\bigskip
+
+\noindent I expect each student to keep up with the class material via lectures and assignments posted on Canvas, as well as read any feedback provided. Although class attendance is not directly required for this course, satisfactory completion of lab assignments requires attending class lectures to keep pace with the class. If you fear you are falling behind, please contact me immediately so we can come up with a plan to catch up. Any late assignments must be approved by me \textbf{prior} to submission, and if a student is unable to attend an examination they are expected to let me know as soon as possible for approval and scheduling of a make-up exam.
+
+\section*{Disability Accommodations}
+If you require Student Disability Center Accommodations for exams, you must make
+arrangements with the Student Disability Center and provide formal documentation to your instructor at
+least two weeks in advance of the exam. (If an exam is taken at SDC without making appropriate
+arrangements, that exam will be ungraded and academic integrity policies may be applied). 
+
+\section*{Academic Integrity}
+The University Policy on Academic Integrity is enforced in this course.
+Misrepresenting someone else’s work as your own (plagiarism) and possessing unauthorized reference
+information in any form that could be helpful while taking an exam are examples of cheating. Submitting
+work from a Solutions Manual or an online homework website as your own are examples of plagiarism.
+Students judged to have engaged in cheating may be assigned a reduced or failing grade for the
+assignment or the course and will be referred to the Office of Conflict Resolution and Student Conduct
+Services for additional disciplinary action. \\
+\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\section*{Weekly Schedule}
+
+\small
+
+\begin{center}
+	\begin{tabular}{l || l | l | l }
+		\toprule
+		\textbf{Dates} & \textbf{Monday} & \textbf{Wednesday} & \textbf{Friday}\\
+		\midrule
+		8/21  - 8/25  & Course Introduction           & General Coding Concepts & Matlab Introduction  \\
+		8/28  - 9/1   & Logic and Loops               & Lab 1                   & Extra Lab Time       \\
+		9/4   - 9/8   & \textbf{No Class!}            & Vectors and Plotting    & Lab 2                \\
+		9/11  - 9/15  & Functions and Recursion       & Lab 3                   & Extra Lab Time       \\
+		9/18  - 9/22  & Interpolation                 & Lab 4                   & Extra Lab Time       \\
+		9/25  - 9/29  & Numerical Integration         & Lab 5                   & Extra Lab Time       \\
+		10/2  - 10/6  & Numerical Differentiation     & Lab 6                   & Extra Lab Time       \\
+		10/9  - 10/13 & Nonlinear Solvers             & Lab 7                   & Extra Lab Time       \\
+		10/16 - 10/20 & Differential Equation Solvers & Lab 8                   & Extra Lab Time       \\
+		10/23 - 10/27 & Final Exam                    & Final Exam              & Final Exam           \\
+		\bottomrule
+		\multicolumn{4}{l}{$^{*}$ Schedule subject to change as necessary.}\\
+	\end{tabular}
+\end{center}
+
+\end{document}

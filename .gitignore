@@ -1,0 +1,13 @@
+*.aux
+*.bbl
+*.bcf
+*.gz
+*.nav
+*.out
+*.blg
+*.snm
+*.log
+*.toc
+*.xml
+*.txt
+!Lecture_Journals/*.txt

@@ -1,0 +1,10 @@
+Hey All,
+
+Today's class we talked about the overview of this class and how it will be run. I hope you all are excited for a fun little romp this semester in learning more about coding in Matlab! This is something I feel very passionate about, having a solid background in algorithms and coding is a big part of my research interests and it has been a very valuable skill in my past career. I hope to be able to pass some of that along to help you all out!
+
+These lecture journals are intended to be quick writing prompts (hopefully no more than 10 minutes) that I hope can accomplish a few things. First, I want to give you all a reason to think a little outside of class on these topics and drive concepts home, even a little bit can go a long way. For my own sake, these responses will help me to understand a little more about how well you are understanding the material and adjust as needed. Finally, I also want to supply an easy and convenient way for someone to reach out to me if they are struggling or falling behind in the class, always feel free to let me know anything you'd like in these journals.
+
+For today, I would like to get to know the class a little better. The first rule of presentations that I learned from teaching and work is to "know your enemy", so I want to make sure I can give you what you're looking for. So please take a little bit to tell me about what prior coding experiences you've had (what language, how comfortable you are, etc.) and what you hope to get out of this class this semester. Also, if you'd like, please also tell me a little about yourself.
+
+See ya Wednesday!
+-Chris
