@@ -1,0 +1,75 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+\newcommand{\comment}[1]{}
+
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+\usepackage{enumitem}
+
+\usepackage{array}
+\usepackage{booktabs}
+
+\lhead{}
+\chead{}
+\rhead{\footnotesize MATH-151 Mathematical Algorithms in Matlab - Fall 2023}
+
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\hypersetup{colorlinks,breaklinks,linkcolor=blue,urlcolor=blue,anchorcolor=blue,citecolor=black}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+	\begin{center}
+		\Large{\textbf{MATH-151 Lab 2: Vectors and Plots}}\\
+			\medskip
+		\normalsize{\textbf{Due:} Monday, September 11, 2023, 10:00am} 
+	\end{center}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Please perform the following tasks using Matlab, submitting all relevant code. You are welcomed to work with other students, however each student must submit their own unique code.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\section*{Task 1: Moving Average}
+	\noindent In any measurement system there will be measurement error. In some cases this error can introduce ``noise" into our measurements that distracts from the underlying information. One very common way to address measurement error is to use a moving average. We will look at how these work using an example of the vertical position of an object thrown into the air.\\
+	\begin{enumerate}[label=\alph*)]
+		\item First, we need to calculate the ``ground truth" or true locations of the object. Suppose the height of the object at time $t$ is given by $y(t) = 450 + 30t - 9.8t^2$. Generate a vector of times from 0 to 10s with a step size of 0.1s and use that vector to compute a vector of the object's height. Create a plot showing the height of the object over time.
+		\item Next we need to add our measurement noise. Create vector of measured locations by taking the true locations and adding on some measurement error, $\tilde{y}(t) = y(t) + \epsilon$. For $\epsilon$ use \texttt{25*randn(size(y))}. (This generates a vector the same size as \texttt{y} using a normal distribution with a standard deviation of 25.) Plot your measurements as dots on the same plot as your true locations.
+		\item We will ``smooth" out this measurement noise using a 3-point moving average. To do this, make a new vector using the following rule
+		\begin{equation*}
+			\bar{y}(t_n) =  \begin{cases}
+				\tilde{y}(t_n) & \text{if } n=1 \\
+				\frac{\tilde{y}(t_n) + \tilde{y}(t_{n-1})}{2} & \text{if } n=2 \\
+				\frac{\tilde{y}(t_n) + \tilde{y}(t_{n-1}) +\tilde{y}(t_{n-2})}{3} & \text{otherwise}
+			\end{cases}
+		\end{equation*}
+		Calculate and plot this moving average as a black dotted line with your ground truth and measurements.
+		\item Label your plot appropriately. At a minimum, this should include labeling the x and y axes, giving a title, and a legend.
+	\end{enumerate}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		\vfill
+		\textit{Remember to use \texttt{hold on} to keep plots on the same axis!}
+	\end{center}
+\end{document}
