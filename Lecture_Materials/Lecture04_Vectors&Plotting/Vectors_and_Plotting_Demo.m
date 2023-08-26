@@ -1,13 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Logic_and_Loops_Demo.m
+% Vectors and Plotting_Demo.m
 %--------------------------------------------------------------------------
 % C Rocheleau, Colorado State University
-% 8/12/2023
+% 8/19/2023
 %--------------------------------------------------------------------------
-% This script will show off some examples of logical statements in
-% Matlab and some usage of if .. else .. statements.
-% Afterwards, there are some examples introducing students to common usage 
-% of for and while loops.
+% This script will show off some examples of vectors and common used in
+% Matlab. This includes generating and fetching elements from a vector,
+% updating a vector in a loop, and lastly plotting a vector. The plotting
+% will show off some aesthetic options for making a legible plot!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Initialization

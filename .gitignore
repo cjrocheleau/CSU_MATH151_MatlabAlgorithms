@@ -13,3 +13,4 @@
 *.txt
 !Lecture_Journals/*.txt
 !Lecture_Materials/*.txt
+testing/
