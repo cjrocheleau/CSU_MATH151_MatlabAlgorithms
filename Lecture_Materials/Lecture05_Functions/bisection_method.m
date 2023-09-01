@@ -28,18 +28,19 @@ function root = bisection_method(left, right, tol)
         tol = 1/1000;
     end
     
-    % For fun, let's plot the search area and see what it does
-    x = -10:1e-4:10;
-    plot(x([1 end]), [0, 0], 'k-','linewidth',2);
-    xlim([-10 10]); ylim([-20 100]);
-    grid on; 
-    hold on;
-    plot(x, x.^2 - x - 12 - 5*cos(pi*x),'linewidth',2)
-    plot(left*[1 1] , ylim ,'b-','linewidth',2)
-    plot(right*[1 1], ylim ,'r-','linewidth',2)
-    plot(((left+right)/2)*[1 1] , ylim ,'k--','linewidth',2)
-    pause(1);
-    hold off;
+    % % For fun, let's plot the search area and see what it does
+    % % Uncomment this block for fun plots!
+    % x = -10:1e-4:10;
+    % plot(x([1 end]), [0, 0], 'k-','linewidth',2);
+    % xlim([-10 10]); ylim([-20 100]);
+    % grid on; 
+    % hold on;
+    % plot(x, x.^2 - x - 12 - 5*cos(pi*x),'linewidth',2)
+    % plot(left*[1 1] , ylim ,'b-','linewidth',2)
+    % plot(right*[1 1], ylim ,'r-','linewidth',2)
+    % plot(((left+right)/2)*[1 1] , ylim ,'k--','linewidth',2)
+    % pause(1);
+    % hold off;
 
 
     % Check if this is a value bisection method

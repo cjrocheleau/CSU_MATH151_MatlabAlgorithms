@@ -1,0 +1,84 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+\newcommand{\comment}[1]{}
+
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+\usepackage{enumitem}
+
+\usepackage{array}
+\usepackage{booktabs}
+
+\lhead{}
+\chead{}
+\rhead{\footnotesize MATH-151 Mathematical Algorithms in Matlab - Fall 2023}
+
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\hypersetup{colorlinks,breaklinks,linkcolor=blue,urlcolor=blue,anchorcolor=blue,citecolor=black}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+	\begin{center}
+		\Large{\textbf{MATH-151 Lab 4: Interpolation Methods}}\\
+			\medskip
+		\normalsize{\textbf{Due:} Monday, September 25, 2023, 10:00am} 
+	\end{center}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Please perform the following tasks using Matlab, submitting all relevant code. You are welcomed to work with other students, however each student must submit their own unique code.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\section*{Task 1: Creating a Parabola}
+	\noindent A good practice to get into with coding is to create general utilities and test them with known examples to make sure they work correctly. We will create and test an interpolate function with a known parabola. 
+	\begin{enumerate}[label=\alph*)]
+		\item Using either Lagrange's method or Newton divided differences. Create a function\\
+		 \texttt{Y = M151\_interp(x\_given, y\_given, X)} that will use vectors \texttt{x\_given} and \texttt{y\_given} to evaluate an interpolating polynomial at points \texttt{X}.
+		\item Use your interpolation function to use the given points (-2, 22), (6, 22), and (7, 31) to calculate an interpolating polynomial at \texttt{X=-10:0.5:10}.
+		\item Compare your interpolation results to the parabola $f(x) = x^2 -4x + 10$, do they match?
+	\end{enumerate}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section*{Task 2: Runge's Function}
+	\noindent A famous example in interpolation that displays the values of different interpolation grid structures is known as Runge's Function, 
+	\begin{equation*}
+		f(x) = \frac{1}{1+25x^2}
+	\end{equation*}
+	We will use our interpolation functions from Task 1 to explore this famous example.
+	\begin{enumerate}[label=\alph*)]
+		\item For a baseline to what we expect, plot the true values of this function for all $x$ between -1 and 1 with a step size of 0.01.
+		\item First, lets see how a uniform grid works. Interpolate this function using its values at 11 equally spaced points from -1 to 1. Plot it with the true function. How does this look?
+		\item Now let's try using what are called Chebyshev points. To generate $K$ Chebyshev points between -1 and 1 we use 
+		\begin{equation*}
+			x_k = \cos\Big(\pi\frac{2k-1}{2K}\Big), \text{ for } k= 1,\dots,K
+		\end{equation*}
+		Interpolate this function using its value at 11 Chebyshev points. Plot it along with your true function and uniform interpolation. Which looks the best?
+		
+	\end{enumerate}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		\vfill
+		\textit{Don't forget to use \texttt{./}, \texttt{.*}, and \texttt{.\^} when working with vectors!}
+	\end{center}
+\end{document}
