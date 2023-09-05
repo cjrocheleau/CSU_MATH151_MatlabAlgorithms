@@ -54,8 +54,8 @@
 	\noindent In any measurement system there will be measurement error. In some cases this error can introduce ``noise" into our measurements that distracts from the underlying information. One very common way to address measurement error is to use a moving average. We will look at how these work using an example of the vertical position of an object thrown into the air.\\
 	\begin{enumerate}[label=\alph*)]
 		\item First, we need to calculate the ``ground truth" or true locations of the object. Suppose the height of the object at time $t$ is given by $y(t) = 450 + 30t - 9.8t^2$. Generate a vector of times from 0 to 10s with a step size of 0.1s and use that vector to compute a vector of the object's height. Create a plot showing the height of the object over time.
-		\item Next we need to add our measurement noise. Create vector of measured locations by taking the true locations and adding on some measurement error, $\tilde{y}(t) = y(t) + \epsilon$. For $\epsilon$ use \texttt{25*randn(size(y))}. (This generates a vector the same size as \texttt{y} using a normal distribution with a standard deviation of 25.) Plot your measurements as dots with no collecting line on the same plot as your true locations.
-		\item We will ``smooth" out this measurement noise using a 3-point moving average. To do this, make a new vector using the following rule
+		\item Next we need to add our measurement noise. Create vector of measured locations by taking the true locations and adding on some measurement error, $\tilde{y}(t) = y(t) + \epsilon$. For $\epsilon$ use \texttt{25*randn(size(y))}. (This generates a vector the same size as \texttt{y} using a normal distribution with a standard deviation of 25.) Plot your measurements as dots with no connecting line on the same plot as your true locations.
+		\item We will ``smooth" out this measurement noise using a 3-point moving average. To do this, make a new vector using the following rule \textit{(Hint: this may require a loop)}
 		\begin{equation*}
 			\bar{y}(t_n) =  \begin{cases}
 				\tilde{y}(t_n) & \text{if } n=1 \\
