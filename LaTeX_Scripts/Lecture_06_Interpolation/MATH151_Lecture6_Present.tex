@@ -101,12 +101,12 @@ style=authortitle-comp,
 	\begin{itemize}
 		\item Sometimes we are given some information and want to find a function that agrees with the data. This is a process called \textbf{interpolation}
 		\begin{itemize}
-			\item Some of you have probably seen least-squares fits or regression before, that seeks to match the ``trend" of the data, however with interpolation, we want to describe the functional relationship of the data \textbf{and} make sure all of our data points are included
+			\item<2-> Some of you have probably seen least-squares fits or regression before, that seeks to match the ``trend" of the data, however with interpolation, we want to describe the functional relationship of the data \textbf{and} make sure all of our data points are included
 			\begin{center}
 				\includegraphics[height = 3cm]{interp_vs_ls.png}
 			\end{center}
 		\end{itemize}
-		\item Most often we use polynomials as our \textbf{interpolants}, but different sets of functions can also be used!
+		\item<3-> Most often we use polynomials as our \textbf{interpolants}, but different sets of functions can also be used!
 	\end{itemize}
 \end{frame}
 
@@ -133,15 +133,15 @@ style=authortitle-comp,
 	\footnotesize
 	\begin{itemize}
 		\item Lagrange's method is centered around creating terms that equal $f(x_i)$ when $x=x_i$ and 0 when $x=x_j, j\neq i$.
-		\item Let's start with the second part, how do we make our term be 0, when our $x$ is any of our other points? We multiply by $(x-x_j)$ for all the $j\neq i$ 
+		\item<2-> Let's start with the second part, how do we make our term be 0, when our $x$ is any of our other points? We multiply by $(x-x_j)$ for all the $j\neq i$ 
 		\begin{center}
 			We write this $\displaystyle\prod_{j=1, j\neq i}^{N}(x-x_j)$
 		\end{center}
-		\item How do we make it correct when $x=x_i$? We take our product above and divide by $(x_i-x_j)$ for each $j\neq i$ so we get 1, then multiply by $f(x_i)$
+		\item<3-> How do we make it correct when $x=x_i$? We take our product above and divide by $(x_i-x_j)$ for each $j\neq i$ so we get 1, then multiply by $f(x_i)$
 		\begin{center}
 			This gives us  $\displaystyle f(x_i)\frac{\prod_{j=1, j\neq i}^{N}(x-x_j)}{\prod_{j=1, j\neq i}^{N}(x_i-x_j)}$
 		\end{center}
-		\item We repeat this for each of our points and add them together
+		\item<4-> We repeat this for each of our points and add them together
 		\begin{equation*}
 			p(x) = \sum_{i=1}^{N}f(x_i)\frac{\prod_{j=1, j\neq i}^{N}(x-x_j)}{\prod_{j=1, j\neq i}^{N}(x_i-x_j)}
 		\end{equation*}
@@ -155,15 +155,15 @@ style=authortitle-comp,
 	\begin{itemize}
 		\item Lagrange's method looks a lot more complicated than it is. Let's see an example.
 		\item Suppose we have 3 points. $(2,5)$, $(7,0)$, and $(8,11)$.
-		\item We start with $x_1 = 2, f(x_1) = 5$. Our term to make sure this works is 
+		\item<2-> We start with $x_1 = 2, f(x_1) = 5$. Our term to make sure this works is 
 		\begin{equation*}
 			f(x_1)\frac{(x-x_2)(x-x_3)}{(x_1 - x_2)(x_1 - x_3)} = 5\frac{(x-7)(x-8)}{(2-7)(2-8)}
 		\end{equation*}
-		\item Repeating this process for $x_2 = 7$ and $x_3 = 8$ we can find our interpolating polynomial
+		\item<2-> Repeating this process for $x_2 = 7$ and $x_3 = 8$ we can find our interpolating polynomial
 		\begin{equation*}
 			p(x) = 5\frac{(x-7)(x-8)}{(2-7)(2-8)} + 0\frac{(x-2)(x-8)}{(7-2)(7-8)} + 11\frac{(x-2)(x-7)}{(8-2)(8-7)}
 		\end{equation*}
-		\item We can simplify this, but we don't have to. The computer loves to grind through arithmetic!
+		\item<3-> We can simplify this, but we don't have to. The computer loves to grind through arithmetic!
 	\end{itemize}
 \end{frame}
 
@@ -174,16 +174,16 @@ style=authortitle-comp,
 	\footnotesize
 	\begin{itemize}
 		\item Another way that we can find our interpolating polynomial with less computational cost is to use \textbf{Newton's divided differences} method
-		\item The divided differences are denoted by $f[]$ and defined using a recursive definition
+		\item<2-> The divided differences are denoted by $f[]$ and defined using a recursive definition
 		\begin{equation*}
 			f[x_1, x_2, \dots, x_n] = \frac{f[x_2,\dots,x_n] - f[x_1,\dots,x_{n-1}]}{x_n - x_1}
 		\end{equation*}
 		where we start with base cases $f[x_i] = f(x_i)$
-		\item And we use these to build our polynomial as follows
+		\item<3-> And we use these to build our polynomial as follows
 		\begin{equation*}
 			p(x) = f[x_1] + f[x_1,x_2](x-x_1) + \dots + f[x_1,\dots,x_n](x-x_1)\times\dots\times(x-x_{n-1})
 		\end{equation*}
-		\item Just like Lagrange's method, this looks much more complicated when writing it abstractly than when performing it in practice, so lets see an example again..
+		\item<4-> Just like Lagrange's method, this looks much more complicated when writing it abstractly than when performing it in practice, so lets see an example again..
 	\end{itemize}
 \end{frame}
 
@@ -197,7 +197,7 @@ style=authortitle-comp,
 			\begin{tikzpicture}[circlenode/.style={circle, draw=black!60, very thick, minimum size=7mm}]
 				% Circcles for the points we use
 				% Nodes
-				\node (x) {$x$};
+				\onslide<2->{\node (x) {$x$};
 				\node (fx)  [right=0.25cm of x] {$f(x)$} ;
 				\node (x1)  [below=0.5cm of x] {2} ;
 				\node (dd1) [right=0.25 of x1] {$f[x_1]$ = } ; 
@@ -205,30 +205,30 @@ style=authortitle-comp,
 				\node (x2)  [below=0.5cm of x1] {7} ;
 				\node (fx2) [right=0.25cm of x2] {$f[x_2]=$ 0} ;
 				\node (x3)  [below=0.5cm of x2] {8} ;
-				\node (fx3) [right=0.25cm of x3] {$f[x_3]=$ 11} ;
-				\node(fx1x2) [below right=-0.1cm and 0.25 cm of fx1] {$f[x_1,x_2] = \frac{0-5}{7-2} =$};
+				\node (fx3) [right=0.25cm of x3] {$f[x_3]=$ 11} ;}
+				\onslide<3->{\node(fx1x2) [below right=-0.1cm and 0.25 cm of fx1] {$f[x_1,x_2] = \frac{0-5}{7-2} =$};
 				\node[circlenode] (x12) [right=0cm of fx1x2] {-1};
-				\node (fx2x3) [below right=0.9cm and 0.25 cm of fx1] {$f[x_2,x_3] = \frac{11-0}{8-7} = 11$};
-				\node (fx1x2x3) [below right=-0.1cm and 0.25 cm of x12] {$f[x_1,x_2,x_3]=\frac{11-(-1)}{8-2} = $};
-				\node[circlenode] (x123) [right=0cm of fx1x2x3] {2};
+				\node (fx2x3) [below right=0.9cm and 0.25 cm of fx1] {$f[x_2,x_3] = \frac{11-0}{8-7} = 11$};}
+				\onslide<4->{\node (fx1x2x3) [below right=-0.1cm and 0.25 cm of x12] {$f[x_1,x_2,x_3]=\frac{11-(-1)}{8-2} = $};
+				\node[circlenode] (x123) [right=0cm of fx1x2x3] {2};}
 				
 				% Lines
-				\draw[-] (fx1.east) -- (fx1x2.west);
+				\onslide<3->{\draw[-] (fx1.east) -- (fx1x2.west);
 				\draw[-] (fx2.east) -- (fx1x2.west);
 				\draw[-] (fx2.east) -- (fx2x3.west);
-				\draw[-] (fx3.east) -- (fx2x3.west);
-				\draw[-] (x12.east) -- (fx1x2x3.west);
-				\draw[-] (fx2x3.east) -- (fx1x2x3.west);
+				\draw[-] (fx3.east) -- (fx2x3.west);}
+				\onslide<4->{\draw[-] (x12.east) -- (fx1x2x3.west);
+				\draw[-] (fx2x3.east) -- (fx1x2x3.west);}
 			\end{tikzpicture}
 		\end{center}
-		\item Putting it all together we can find our interpolating polynomial is 
+		\item<4-> Putting it all together we can find our interpolating polynomial is 
 		\begin{equation*}
 			f(x) = 5 + (-1)(x-2) + 2(x-2)(x-7)
 		\end{equation*}
 		\begin{equation*}
 			\text{or, if we want to be fancy, } f(x) = 5 + (x-2)\bigg(-1 + (x-7)(2)\bigg)
 		\end{equation*}
-		\item If we want to do the work, we can see this is the same answer that Lagrange's method gave us!
+		\item<5-> If we want to do the work, we can see this is the same answer that Lagrange's method gave us!
 	\end{itemize}	
 \end{frame}
 
@@ -239,8 +239,8 @@ style=authortitle-comp,
 		\item Both of these methods get us to the same answer, so why show both of them? 
 		\item Each method has its own strengths and weaknesses.
 		\begin{itemize}
-			\item Lagrange's method is easier to understand and more straightfoward. But it is less flexible to new data, and often less computationally efficient
-			\item Newton's divided differences are easier to add new data points to and can be written to be very fast, however it is harder to understand and implement
+			\item<2-> Lagrange's method is easier to understand and more straightfoward. But it is less flexible to new data, and often less computationally efficient
+			\item<3-> Newton's divided differences are easier to add new data points to and can be written to be very fast, however it is harder to understand and implement
 		\end{itemize}
 	\end{itemize}
 \end{frame}

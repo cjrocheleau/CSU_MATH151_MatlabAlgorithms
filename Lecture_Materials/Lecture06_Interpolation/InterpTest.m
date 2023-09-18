@@ -1,15 +1,18 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % InterpTest.m
-% <include>lagrange_interp.m<\include>
-% <include>Newton_DD.m<\include>
+%--------------------------------------------------------------------------
+% MATH-151 Quick Test script to see interpolation in practice
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Let's do Runge's Function
 x = -1:0.01:1; y = 1./(1 + 25*x.^2);
 
 % Define number of interpolation points and desired X points
-numPts = 11;
+
 X = -1:0.01:1; 
 
 % Do Uniform spacing with Lagrange Method
+numPts = 21;
 unifx = linspace(-1, 1, numPts);
 unify = 1./(1 +  25*unifx.^2);
 unifY = lagrange_interp(unifx, unify, X);
@@ -21,25 +24,27 @@ chebY = Newton_DD(chebx, cheby, X);
 
 % Plot
 figure()
-plot(x,y,'k-','linewidth',2);
+htruth = plot(x,y,'k-','linewidth',2);
 hold on;
 plot(unifx, unify,'bo'); 
-plot(X, unifY, 'b-');
+hunif = plot(X, unifY, 'b-');
 plot(chebx, cheby, 'ro');
-plot(X, chebY,'r-');
+hcheby = plot(X, chebY,'r-');
 
-%% Lets compare with Matlab's built in polyfit function
-matlab_p_unif  = polyfit(unifx, unify, numPts-1);
-matlab_unifY   = polyval(matlab_p_unif, X);
+legend([htruth, hunif, hcheby],{'Truth','Uniform Spacing','Chebyshev Points'});
 
-matlab_p_cheb  = polyfit(chebx, cheby, numPts-1);
-matlab_chebY   = polyval(matlab_p_cheb, X);
-
-% Plot
-figure()
-plot(x,y,'k-','linewidth',2);
-hold on;
-plot(unifx, unify,'bo'); 
-plot(X, matlab_unifY, 'b-');
-plot(chebx, cheby, 'ro');
-plot(X, matlab_chebY,'r-');
+% %% Lets compare with Matlab's built in polyfit function
+% matlab_p_unif  = polyfit(unifx, unify, numPts-1);
+% matlab_unifY   = polyval(matlab_p_unif, X);
+% 
+% matlab_p_cheb  = polyfit(chebx, cheby, numPts-1);
+% matlab_chebY   = polyval(matlab_p_cheb, X);
+% 
+% % Plot
+% figure()
+% plot(x,y,'k-','linewidth',2);
+% hold on;
+% plot(unifx, unify,'bo'); 
+% plot(X, matlab_unifY, 'b-');
+% plot(chebx, cheby, 'ro');
+% plot(X, matlab_chebY,'r-');

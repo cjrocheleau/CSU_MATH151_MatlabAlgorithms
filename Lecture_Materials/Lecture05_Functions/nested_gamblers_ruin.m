@@ -17,7 +17,7 @@ close all; clear all; clc;
 initial_money = 10;     % Lets start with $10
 num_plays     = 25;     % We will play 10 games in our simulation
 num_sims      = 5;      % We'll do 5 simulations to compare
-win_prob      = 0.40;   % Give the game a 45% win probability
+win_prob      = 0.45;   % Give the game a 45% win probability
 
 % Lets track how much money is made in each game and the final total
 final_money  = zeros(1,num_sims);

@@ -91,10 +91,10 @@ display(median)
 
 %% Fibonacci Sequence
 % This is a good example of showing how we can mix vectors together with
-% out for loops and if ... else ... statements.
+% for loops and if ... else ... statements.
 % In the Fibonacci sequence, we start with 1 and 1, and then the next
 % number is given by the sum of the two that came before it. It looks like 
-% 1, 1, 2, 3, 5, 8, 11, ...
+% 1, 1, 2, 3, 5, 8, 13, ...
 % We'll calculate the first N terms then plot them
 
 % How many terms do we want?
@@ -102,7 +102,7 @@ N = 10;
 
 % Preallocate our vector as all zeros (this step isn't necessary but it
 % speeds things up when vectors get VERY large, so is good practice)
-fib_seq = zeros(N,1);   % A row vector of N zeros to start with
+fib_seq = zeros(1,N);   % A row vector of N zeros to start with
 
 % If N is 1 or 2, we already have the answer!
 for ii = 1:length(fib_seq)  % I like to use the length of my vector for the max iteration in case I ever want to change the vector
@@ -157,6 +157,6 @@ title('Good Lookin Plot!')
 hold on;                 % This tells Matlab to hold onto everything on the current plot
 plot( x, sin(pi*x), 'k-'); % For simple functions we can just put them right into the plot function
 
-legend('x^3 +-2sin(pi*x) + 1', 'sin(pi*x)') % label the plots in the order you made them to label it correctly
+legend('x^3 - 2sin(pi*x) + 1', 'sin(pi*x)') % label the plots in the order you made them to label it correctly
 
 
