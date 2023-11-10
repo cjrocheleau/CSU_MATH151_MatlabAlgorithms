@@ -1,0 +1,84 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+\newcommand{\comment}[1]{}
+
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+\usepackage{enumitem}
+
+\usepackage{array}
+\usepackage{booktabs}
+
+\lhead{}
+\chead{}
+\rhead{\footnotesize MATH-151 Mathematical Algorithms in Matlab - Fall 2023}
+
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\hypersetup{colorlinks,breaklinks,linkcolor=blue,urlcolor=blue,anchorcolor=blue,citecolor=black}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+	\begin{center}
+		\Large{\textbf{MATH-151 Lab 8: ODE Solvers}}\\
+			\medskip
+		\normalsize{\textbf{Due:} Monday, October 23, 2023, 10:00am} 
+	\end{center}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Please perform the following tasks using Matlab, submitting all relevant code. You are welcomed to work with other students, however each student must submit their own unique code.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\section*{Task 1: What a Drag!}
+	\noindent Some of the most common things you would like to model happen when things are moving, so let's consider how we can model this using our ODE solvers! We know that velocity is the derivative of position and acceleration is the derivative of that, so if we know forces acting on an object we can use Newton's second law of motion $F=ma$ to set up an initial value problem.
+	\begin{align*}
+		&\frac{dv}{dt} = \frac{F(t,x,v)}{m} \\
+		&\frac{dx}{dt} = v \\
+		&x(0) = 0, \hspace{0.1cm} v(0) = 0
+	\end{align*}
+	Let's use this to examine the effect of drag force on a skydiver.
+	\begin{enumerate}[label=\alph*)]
+		\item First we'll assume there is no drag. Letting $F = mg$ where $g=9.81 m/s^2$ and $m=70kg$. Solving this system of ODEs, find how far the skydiver falls in 30 seconds using a time step of 0.5 seconds. Plot the distance traveled $x$ as a function of time $t$.
+		\item Now let's add drag and see what effect this has. Now we let $F = mg - 0.08v^2$ (corresponding to the skydiver falling head-first) and see how that changes your results. Plot this trajectory on the same axis as your plot from part 1. How much less does the skydiver fall because of drag force?   
+		\item Say now instead of trying to fall as slowly as possible, they can face the ground and spread out as much as possible. This will change our force to $F = mg - 0.45v^2$. Once again, plot this along with the other two trajectories. How much does this affect their falling speed? 
+		\item What does all of this tell you about drag forces? Did you learn anything new?
+	\end{enumerate}
+%	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	\section*{Task 2: Bubbles!}
+%	\noindent We can also use ODEs to find more fun things around us! For example a soap bubble between two rings of different radii will take on the shape with the smallest volume of revolution. If the rings are a distance $L=10$ apart we can write this as a boundary value problem 
+%	\begin{align*}
+%		&\frac{du'}{dx}(x) = \frac{1 + u'(x)^2}{u(x)} \\
+%		&\frac{du}{dx}(x) = u'(x) \\
+%		&u(0) = 10, \hspace{0.1cm} u(10) = 7
+%	\end{align*}
+%	\begin{enumerate}[label=\alph*)]
+%		\item Set up a shooting method solution for this BVP. Use initial guesses of $u'(0) = 0$ and $u'(0) = -3$, and use bisection method to find the correct starting slope. Plot what shape the bubble will take. (Tip: using \texttt{axis equal} after plotting will make the axes scaling the same and show you more accurately what the shape looks like.)
+%	\end{enumerate}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		\vfill
+		\textit{Always feel free to reuse and edit code as needed!}
+	\end{center}
+\end{document}

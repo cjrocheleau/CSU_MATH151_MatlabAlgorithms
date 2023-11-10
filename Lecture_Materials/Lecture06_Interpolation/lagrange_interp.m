@@ -2,14 +2,18 @@ function desy = lagrange_interp(measx, measy, desx)
 
 desy = zeros(size(desx));
 
-for iX = 1:length(measx)
+% Iterate across the Y balues of our given points
+for iY = 1:length(measy)
+    % Reset our numerators and denominators
     tempnum = 1; 
     tempden = 1;
-    for ii = 1:length(measx)
-        if ii ~= iX
-            tempnum = tempnum.*(desx - measx(ii));
-            tempden = tempden.*(measx(iX) - measx(ii));
+    % Construct our numerator and denominators by iterating across measx
+    for iX = 1:length(measx)
+        if iX ~= iY     % Don't use the point we are at to avoid 0/0
+            tempnum = tempnum.*(desx - measx(iX));
+            tempden = tempden.*(measx(iY) - measx(iX));
         end
     end
-    desy = desy + measy(iX).*tempnum./tempden;
+    % Add our newest term onto our outputs
+    desy = desy + measy(iY).*tempnum./tempden;
 end

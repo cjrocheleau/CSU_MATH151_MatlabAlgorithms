@@ -1,0 +1,89 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+\newcommand{\comment}[1]{}
+
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+\usepackage{enumitem}
+
+\usepackage{array}
+\usepackage{booktabs}
+
+\lhead{}
+\chead{}
+\rhead{\footnotesize MATH-151 Mathematical Algorithms in Matlab - Fall 2023}
+
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\hypersetup{colorlinks,breaklinks,linkcolor=blue,urlcolor=blue,anchorcolor=blue,citecolor=black}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+	\begin{center}
+		\Large{\textbf{MATH-151 Final Lab}}\\
+			\medskip
+		\normalsize{\textbf{Due:} Monday, October 30, 2023, 10:00am} 
+	\end{center}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Please perform the following tasks using Matlab, submitting all relevant code. You are welcomed to work with other students, however each student must submit their own unique code. \textbf{I would highly recommend reusing as much code as you can from previous labs!}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\section*{Task 1: Going on Cruise Control}
+	\noindent We have learned a lot of algorithm skills over this semester and hopefully some of you have started to see how they can interact with each other. For this Final Lab, lets use all of the skills we have learned to create a model of how a car's cruise control works, while also simulating the movement of the car as the controls change so we can see how we can see how these two things interact.
+	\begin{enumerate}[label=\alph*)]
+		\item For our controls, we are going to develop what is known as a PID controller (Proportional-Integral-Derivative). We'll focus on the proportional part first, this tells the car to accelerate in proportion $P$ to how much is current measured speed $v_{meas}$ is from the desired speed $v_{des}$. We choose $P$ to minimize a ``settling time", suppose we have the following measurements of the derivative of settling time with respect to $P$. Interpolate these points and use either bisection method or Secant method to find when this derivative is 0, which corresponds to our minimum. 
+		\begin{equation*}
+			(0.5, -2.2) \hspace{0.5cm} (1.0, -1.0) \hspace{0.5cm} (1.5, 0.1)
+		\end{equation*}
+		\textbf{Show a plot of this interpolated function, and that your chosen $P$ value is, in fact, the minimizer.}
+		\item Now that we have this P gain we can model how our car speeds up. For desired speed $v_{des} = 50$mph, Write a solver to the ODE
+		\begin{align*}
+			&\frac{dv}{dt} = a_{cmd} - \frac{v^2}{2000} \\
+			& v(0) = 40
+		\end{align*} 
+		To show how the car's velocity will change with time for 0 to 30s with time step of $dt = 0.2s$.\\
+		\\
+		Since we currently, only have a $P$ gain defined from part (a), our commanded acceleration will be $a_{cmd} = P(v_{des} - v_{meas})$ where at step $k$, $v_{meas} = v_{k-1}$, indicating that our controller only ``knows" its velocity from the last time step.\\
+		\textbf{Show a plot of your velocity vs time. Describe what this plot is telling us.}
+		\item As we have it now, this car will accelerate enough to cause discomfort in the driver, so we need to limit how much our car can accelerate. Typical accelerations range from -3mph/s to 3mph/s, update your code so that if the $a_{cmd}$ is outside of this range, it is set to either -3 or 3 mph/s. \textit{(Note: Be careful to make sure you keep the correct sign on your command!)}\\
+		\textbf{Show your updated velocity vs time plot. How have things changed from the last step?}
+		\item Hopefully you have noticed that your commanded accelerations don't quite get the car to the correct speed. So we need to incorporate an integral gain I to give the car a little extra push! We will let $I=3$ and update our commanded accelerations to be \\
+		\begin{equation*}
+			a_{cmd}(t) = P(v_{des} - v_{meas}(t)) + I\int_{t-1}^{t}(v_{des} - v_{meas}(\tau))d\tau
+		\end{equation*}
+		Where our new term will integrate the error of our previous 1 second of velocities \textit{(Remember, since $dt = 0.2s$, this would be our last 5 measurements. If you have fewer than 5 measurements, just add up what you have)} and accelerate or decelerate our car to make this integral equal to zero.
+		\textbf{Plot your latest velocity vs time with this updated controller. How did the integral gain affect your velocities?}
+		\item Now we are able to reach our desired speed, but there is a lot more change in our speed that might make our drivers uncomfortable. We want to smooth out our velocity curve so we can have a smoother ride, this is done by adding the final piece of our PID puzzle, the derivative gain, D. We will once again update our commanded acceleration using $D=-0.25$ so it becomes 
+		\begin{equation*}
+			a_{cmd}(t) = P(v_{des} - v_{meas}(t)) + I\int_{t-1}^{t}(v_{des} - v_{meas}(\tau))d\tau + D\frac{dv_{meas}}{dt}(t)
+		\end{equation*}
+		\textbf{Once again plot the velocity vs time. What did the derivative gain term do to your controls?}
+		\item How does this all look at the end? How might you want to improve the controller in the future?
+	\end{enumerate}
+	\begin{center}
+		\vfill
+		\textit{Good luck with the rest of your semester!}
+	\end{center}
+\end{document}
