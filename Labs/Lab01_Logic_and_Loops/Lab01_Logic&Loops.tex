@@ -44,30 +44,28 @@
 	\begin{center}
 		\Large{\textbf{MATH-151 Lab 1: Logic and Loops}}\\
 			\medskip
-		\normalsize{\textbf{Due:} Monday, September 4, 2023, 10:00am} 
+		\normalsize{\textbf{Due:} Wednesday, September 6, 2023, 10:00am} 
 	\end{center}
 	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	Please perform the following tasks using Matlab, submitting all relevant code. You are welcomed to work with other students, however each student must submit their own unique code.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	\section*{Task 1: Factorials and Gambling}
-	\noindent Preamble
+	\noindent The factorial function $n! = 1\times2\times\dots\times n$ is a useful function in combinatorics and probability, it is able to tell us how many different ways $n$ objects can be ordered. It has a nice property that $n!=n\times(n-1)!$, which allows us to compute it algorithmically by starting at 1 and multiplying by every number up to $n$. \\
 	\begin{enumerate}[label=\alph*)]
-		\item Lets
-		\item Code
-		\item Babyyyyyyyyyyyy
+		\item The Kentucky Derby is a yearly horse race with 14 contestants. One can win an obscene amount of money by betting on the exact finishing order of the 14 horses. Using a for loop, compute the number of possible orderings that the horses may finish. \textit{(Hint: You may check your answer using Matlab's factorial function, \texttt{factorial(n)}.)}
+		\item Suppose someone is trying to found a new horse race, and they want to use the least number of horses such that there are over 1,000,000 possible orderings. Use a while loop to find how many horses should be in their race.
 	\end{enumerate}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section*{Task 2: The Gambler's Ruin}
-	\noindent Some goofy spiel here\\
+	\noindent After a long day at the track, you still want to do some more gambling so you go to the casino! Lets use some of the coding skills we've learned to simulate our experience.\\
 	\begin{enumerate}[label=\alph*)]
-		\item Blah blah blah
-		\item Yada yada yada 
+		\item Suppose you arrive at the casino with \$100. You play a game in which you win \$1 with 45\% probability, or lose \$1 with 55\% probability. Write a code that simulates how many games you play before losing all your money. \textit{(Hint: \texttt{rand < 0.45} will return a true value 45\% of the time)} 
 	\end{enumerate}
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{center}
 		\vfill
-		\textit{Some lab specific reminder?}
+		\textit{Remember to initialize values correctly!}
 	\end{center}
 \end{document}

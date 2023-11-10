@@ -1,0 +1,79 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+\newcommand{\comment}[1]{}
+
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+\usepackage{enumitem}
+
+\usepackage{array}
+\usepackage{booktabs}
+
+\lhead{}
+\chead{}
+\rhead{\footnotesize MATH-151 Mathematical Algorithms in Matlab - Fall 2023}
+
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\hypersetup{colorlinks,breaklinks,linkcolor=blue,urlcolor=blue,anchorcolor=blue,citecolor=black}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+	\begin{center}
+		\Large{\textbf{MATH-151 Lab 3: Functions and Recursion}}\\
+			\medskip
+		\normalsize{\textbf{Due:} Monday, September 18, 2023, 10:00am} 
+	\end{center}
+	\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Please perform the following tasks using Matlab, submitting all relevant code. You are welcomed to work with other students, however each student must submit their own unique code.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section*{Task 1: Return of the Factorials}
+	\noindent We looked at the factorial function previously to practice using loops in Lab 1. The same property to compute the factorial using a loop also makes it very well-suited to be used as a recursive function! As a reminder, the property of interest is below\\
+	\begin{equation*}
+		n! = n\times(n-1)!\text{, with base case } 0! = 1
+	\end{equation*}
+	\begin{enumerate}[label=\alph*)]
+		\item Using this property, create a recursive function \texttt{recursive\_factorial(n)} that computes the factorial for positive integer \texttt{n}. Using this function, what is $16!$ ?
+	\end{enumerate}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\section*{Task 2: What's Your Sine?}
+	\noindent Anyone who has taken a class with me should be familiar that I believe the Taylor series is one of the most important concepts in mathematics. In this task I will try to drive that concept home by showing you how it is used to approximate the Sine function. Reminder, the Taylor series for Sine using $N$ terms is given as 
+	\begin{equation*}
+		\sin(x) \approx \sum_{n=1}^{N}\frac{(-1)^{n-1} x^{2n-1}}{(2n-1)!}
+	\end{equation*}
+	\begin{enumerate}[label=\alph*)]
+		\item Guess how many terms of the Taylor series Matlab uses for the \texttt{sin(x)} function.
+		\item Create a function \texttt{taylor\_sine(x,N)} that accepts a vector \texttt{x} and an integer \texttt{N} and outputs a vector containing estimates of the Sine of each element of \texttt{x} using \texttt{N} terms of the Taylor series. Using \texttt{x = -pi:0.1:pi}, plot the outputs of \texttt{sin(x)} and \texttt{taylor\_sine(x,3)} as functions of \texttt{x} on the same axis. How well do they agree with each other? \textit{(Note: I would prefer if you use your factorial function from Task 1, but you may also use Matlab's built-in \texttt{factorial} function.)}
+		\item Now try using \texttt{taylor\_sine(x,5)}, how does that look?
+	\end{enumerate}
+	
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		\vfill
+		\textit{It can be helpful to test your functions with small, known examples first!}
+	\end{center}
+\end{document}

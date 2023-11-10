@@ -1,3 +1,4 @@
+*.asv
 *.aux
 *.bbl
 *.bcf
@@ -12,3 +13,4 @@
 *.txt
 !Lecture_Journals/*.txt
 !Lecture_Materials/*.txt
+testing/
