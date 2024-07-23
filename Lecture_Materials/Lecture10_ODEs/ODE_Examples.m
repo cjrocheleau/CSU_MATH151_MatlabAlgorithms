@@ -25,19 +25,19 @@ t = 0:h:10;
 y_true = exp(t/2);
 
 % Find Backward Euler to f' = f/2
-y_BE = ones(size(t));
+y_FE = ones(size(t));
 for n = 2:length(t)
-    y_BE(n) = y_BE(n-1) + h*y_BE(n-1)/2;
+    y_FE(n) = y_FE(n-1) + h*y_FE(n-1)/2;
 end
 
 % Plotting our Solution Compared to Truth
 figure();
-plot(t, y_BE, 'b.-','linewidth',2,'markersize',25);
+plot(t, y_FE, 'b.-','linewidth',2,'markersize',25);
 hold on; grid on; ylim([0 225])
 set(gca,'fontsize',14,'fontweight','b')
 ylabel('y(t)')
 xlabel('t');
-title('Backward Euler Solution to y''(t)=y(t)/2')
+title('Forward Euler Solution to y''(t)=y(t)/2')
 
 figure();
 plot(t, y_true, 'r-','linewidth',5);
@@ -45,21 +45,21 @@ hold on; grid on; ylim([0 225])
 set(gca,'fontsize',14,'fontweight','b')
 ylabel('y(t)')
 xlabel('t');
-plot(t, y_BE, 'b.-','linewidth',2,'markersize',25);
-title('Backward Euler Solution to y''(t)=y(t)/2')
+plot(t, y_FE, 'b.-','linewidth',2,'markersize',25);
+title('Forward Euler Solution to y''(t)=y(t)/2')
 
 
 % Find Forward Euler Solutions to f' = f/2
-y_FE = ones(size(t));
+y_BE = ones(size(t));
 for n = 2:length(t)
     % Update with a Backward Euler guess
-    y_FE(n) = y_FE(n-1) + h*y_FE(n-1)/2;
+    y_BE(n) = y_BE(n-1) + h*y_BE(n-1)/2;
     temp = Inf;
 
     % We solve nonlinear equation 0 = f_n - (f_(n-1) + h*f_n / 2) 
-    while abs(y_FE(n) - temp) > 0.001
-        temp = y_FE(n);
-        y_FE(n) = y_FE(n) - (y_FE(n) - h*y_FE(n)/2 - y_FE(n-1))/(1 - h/2);
+    while abs(y_BE(n) - temp) > 0.001
+        temp = y_BE(n);
+        y_BE(n) = y_BE(n) - (y_BE(n) - h*y_BE(n)/2 - y_BE(n-1))/(1 - h/2);
     end
 end
 
@@ -70,8 +70,8 @@ hold on; grid on; ylim([0 225])
 set(gca,'fontsize',14,'fontweight','b')
 ylabel('y(t)')
 xlabel('t');
-plot(t, y_FE, 'b.-','linewidth',2,'markersize',25);
-title('Forward Euler Solution to y''(t)=y(t)/2')
+plot(t, y_BE, 'b.-','linewidth',2,'markersize',25);
+title('Backward Euler Solution to y''(t)=y(t)/2')
 
 % Find Runge-Kutta 4th Order Solutions to f' = f/2
 y_RK4 = ones(size(t));
